@@ -6,30 +6,39 @@
 /*   By: yidouiss <yidouiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:55:18 by yidouiss          #+#    #+#             */
-/*   Updated: 2022/10/25 19:03:00 by yidouiss         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:18:16 by yidouiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-int	ft_format(va_list list, char c, int size)
+int	ft_format(va_list list, char c)
 {
-	if (c == ('c'))
+	if (c == 'c')
 	{
 		ft_putchar(va_arg(list, int));
-		return(1);
+		return (1);
 	}
-	if (c == ('s'))
+	if (c == '%')
 	{
-		ft_putstr(va_arg(list, int));
-		size++;
+		ft_putchar('%');
+		return (1);
 	}
-	return (size);
+	if (c == 's')
+		return (fm_str(va_arg(list, char *)));
+	if (c == 'p')
+		return (fm_point(va_arg(list, unsigned long long)));
+	if (c == 'd' || c == 'i')
+		return (fm_dec(va_arg(list, int)));
+	if (c == 'u')
+		return (fm_uint(va_arg(list, unsigned int)));
+	if (c == 'x' || c == 'X')
+		return (fm_hex(va_arg(list, unsigned int), c));
+	return (0);
 }
 
 int	ft_printf(const char *desc, ...)
@@ -44,8 +53,7 @@ int	ft_printf(const char *desc, ...)
 		if (*desc == '%')
 		{
 			desc++;
-			size += ft_format(list, *desc, size);
-				ft_putchar(*desc);
+			size += ft_format(list, *desc);
 		}
 		else
 		{
@@ -57,11 +65,12 @@ int	ft_printf(const char *desc, ...)
 	va_end(list);
 	return (size);
 }
-
+/*
 int main(void)
 {
-	printf("%d", - ft_printf(" %c %c %c ", '0', 0, '1'));
+	//char *test = "yes";
+	printf("%d", ft_printf("%x - ", 123425428));
 	printf("\n");
-	printf("%d", - printf(" %c %c %c ", '0', 0, '1'));
+	printf("%d", printf("%x - ", 123425428));
 	return (0);
-}
+}*/

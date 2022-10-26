@@ -6,7 +6,7 @@
 /*   By: yidouiss <yidouiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:13:12 by yidouiss          #+#    #+#             */
-/*   Updated: 2022/10/25 16:36:46 by yidouiss         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:48:12 by yidouiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 void				*ft_memset(void *dest, int c, size_t n);
+char				*ft_strrev(char *str);
+int					ft_intlen(int n);
 void				ft_putchar(int c);
+void				ft_putstr(char *str);
 void				ft_bzero(void *b, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);

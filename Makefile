@@ -6,7 +6,7 @@
 #    By: yidouiss <yidouiss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 15:22:23 by yidouiss          #+#    #+#              #
-#    Updated: 2022/10/25 13:05:04 by yidouiss         ###   ########.fr        #
+#    Updated: 2022/10/26 16:08:48 by yidouiss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ DIROBJ		= ./objs/
 DIRLIB		= ./libft/
 
 SRC			= ft_printf \
-				fm_char
+				fm_str \
+				fm_point \
+				fm_dec \
+				fm_uint \
+				fm_hex
 
 SRCS		= $(addprefix ${DIRSRC}, $(addsuffix .c, ${SRC}))
 
